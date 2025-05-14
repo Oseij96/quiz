@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, session, url_for
+import os
 import json, random
 
 app = Flask(__name__)
-
+app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'default_secret_key')
 
 def load_questions():
     with open('questions.json') as f:
